@@ -1,2 +1,4 @@
-# crack-zip-password
+zip-password-cracker
+====================
+
 ZIP Password Cracking Toolkit

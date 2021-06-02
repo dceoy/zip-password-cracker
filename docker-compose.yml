@@ -1,0 +1,9 @@
+---
+version: '3'
+
+services:
+  john:
+    build:
+      context: ./build/john
+      dockerfile: Dockerfile
+    image: dceoy/john:latest
