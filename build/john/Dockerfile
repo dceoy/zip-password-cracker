@@ -16,7 +16,7 @@ RUN set -e \
       && apt-get clean \
       && rm -rf /var/lib/apt/lists/*
 
-RUN set -eo pipefail \
+RUN set -e \
       && chmod +x /usr/local/bin/print-github-tags \
       && git clone --depth 1 \
         https://github.com/openwall/john /opt/john \

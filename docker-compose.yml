@@ -7,3 +7,8 @@ services:
       context: ./build/john
       dockerfile: Dockerfile
     image: dceoy/john:latest
+  hashcat:
+    build:
+      context: ./build/hashcat
+      dockerfile: Dockerfile
+    image: dceoy/hashcat:latest
