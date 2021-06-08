@@ -2,13 +2,22 @@
 version: '3'
 
 services:
-  john:
+  zip2john:
     build:
       context: ./build/john
       dockerfile: Dockerfile
     image: dceoy/john:latest
+    volumes:
+      - ${PWD}:/host:ro
+    entrypoint:
+      - /opt/john/run/zip2john
   hashcat:
     build:
       context: ./build/hashcat
       dockerfile: Dockerfile
     image: dceoy/hashcat:latest
+    volumes:
+      - ${PWD}:/host:ro
+    working_dir: /opt/hashcat
+    entrypoint:
+      - ./hashcat.bin
