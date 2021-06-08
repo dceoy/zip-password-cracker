@@ -25,6 +25,6 @@ RUN set -eo pipefail \
       && mv /opt/hashcat-* /opt/hashcat \
       && rm -f /tmp/hashcat.7z
 
-ENV HOME /opt/hashcat
+WORKDIR /opt/hashcat
 
 ENTRYPOINT ["/opt/hashcat/hashcat.bin"]
