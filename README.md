@@ -6,22 +6,24 @@ ZIP Password Cracking Toolkit for NVIDIA GPUs
 Docker image
 ------------
 
-Pull images using Docker Compose.
-
 ```sh
-$ docker-compose pull
+$ docker image pull dceoy/john:latest
+$ docker image pull dceoy/hashcat:latest
 ```
 
 Usage
 -----
 
-1.  Install NVIDIA Driver.
+1.  Install the dependencies:
+    - Docker
+    - NVIDIA Driver
+    - NVIDIA Container Toolkit
 
 2.  Extract the password hash from a ZIP file (`./foo.zip`).
 
     ```sh
-    $ docker-compose run --rm -v ${PWD}:/wd:ro \
-        zip2john /wd/foo.zip \
+    $ docker container run --rm --entrypoint=zip2john -v ${PWD}:/wd:ro \
+        dceoy/john /wd/foo.zip \
         | grep -e '^[^:]\+.zip:' \
         | cut -d ':' -f 2 \
         | tee foo.zip.hash.txt
@@ -30,8 +32,8 @@ Usage
 3.  Crack the password with brute-force attack using a GPU.
 
     ```sh
-    $ docker-compose run --rm -v ${PWD}:/wd:ro \
-        hashcat -a 3 -w 4 -m 17220 /wd/foo.zip.hash.txt ?a?a?a?a?a?a?a?a
+    $ nvidia-docker container run --rm -v ${PWD}:/wd:ro \
+        dceoy/hashcat -a 3 -w 4 -m 17220 /wd/foo.zip.hash.txt ?a?a?a?a?a?a?a?a
     ```
 
     The hash types of ZIP files:
