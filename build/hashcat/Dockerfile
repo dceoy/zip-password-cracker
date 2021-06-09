@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.3.0-runtime-ubuntu20.04
+FROM nvidia/cuda:11.3.1-devel-ubuntu20.04
 
 ADD https://raw.githubusercontent.com/dceoy/print-github-tags/master/print-github-tags /usr/local/bin/print-github-tags
 
