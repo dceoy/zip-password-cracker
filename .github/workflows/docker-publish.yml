@@ -1,0 +1,25 @@
+---
+name: Docker
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Log into registry
+        run: |
+          echo '${{ secrets.DOCKER_TOKEN }}' | docker login -u ${{ github.actor }} --password-stdin
+
+      - name: Build and push images
+        run: |
+          docker-compose build && docker-compose push
