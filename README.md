@@ -3,6 +3,8 @@ zip-password-cracker
 
 ZIP Password Cracking Toolkit for NVIDIA GPUs
 
+[![CI to Docker Hub](https://github.com/dceoy/zip-password-cracker/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/dceoy/zip-password-cracker/actions/workflows/docker-publish.yml)
+
 Docker image
 ------------
 
